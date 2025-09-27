@@ -1,5 +1,5 @@
 import './App.css'
-import TopBar from './components/TopBar'
+import TopBar from './shared/TopBar'
 
 function App() {
   return (
