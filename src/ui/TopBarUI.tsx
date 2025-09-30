@@ -9,7 +9,7 @@ const TopBarUI = ({ listaOpciones,toggleMenu }: TopBarProps) => {
     if (toggleMenu) toggleMenu();
   }
  return (
-    <div className="relative w-full bg-no-repeat bg-cover" style={{ backgroundImage: "url('/img/TopBarBackground.svg')" }}>
+    <div className="relative w-full bg-no-repeat bg-cover z-2" style={{ backgroundImage: "url('/img/TopBarBackground.svg')" }}>
       <nav className="flex items-center justify-center h-20 sm:h-24 md:h-28 space-x-8 gap-3 ">
         {listaOpciones.map((opcion, index) => (
           <ul key={index} className="hidden md:flex gap-6">
