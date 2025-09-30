@@ -1,4 +1,3 @@
-import React, { useReducer } from 'react'
 
 export default function Productos() {
 
@@ -9,7 +8,7 @@ export default function Productos() {
           <button className='border-r p-2 hover:bg-green-700 rounded-l-xl' style={{borderColor: "#50AE36"}}>Todos los productos</button>
           <button className='border-r pr-4 pl-4 hover:bg-green-700' style={{borderColor: "#50AE36"}}>Chifles</button>
           <button className='border-r pr-4 pl-4 hover:bg-green-700' style={{borderColor: "#50AE36"}}>Alfajores</button>
-          <button className='pr-4 pl-4 hover:bg-green-700 rounded-r-xl'>Cocada</button>      
+          <button className='pr-4 pl-4 hover:bg-green-700 rounded-r-xl'>Cocada</button>
       </div>
     </div>
   )
