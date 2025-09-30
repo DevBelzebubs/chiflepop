@@ -35,9 +35,7 @@ const TopBarUI = ({ listaOpciones,toggleMenu }: TopBarProps) => {
       {hamburguerMenu && (
         <HamburguerMenu
           hamburguerMenu={hamburguerMenu}
-          listaOpciones={listaOpciones}
-          toggleMenu={() => setHamburguerMenu(false)}
-        />
+          listaOpciones={listaOpciones}/>
       )}
     </div>
   );

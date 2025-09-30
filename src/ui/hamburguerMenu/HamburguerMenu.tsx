@@ -2,7 +2,6 @@ import { Link } from 'react-scroll';
 import type { TopBarProps } from '../../interfaces/TopBarProps';
 type Props = {
   hamburguerMenu: boolean;
-  toggleMenu?: (value: boolean) => void;
 } & TopBarProps;
 
 const HamburguerMenu=({ hamburguerMenu, listaOpciones }: Props)=> {
