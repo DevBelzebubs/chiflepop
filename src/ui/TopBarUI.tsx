@@ -1,19 +1,25 @@
 import type {TopBarProps} from "../interfaces/TopBarProps"
 import { Link } from "react-scroll";
-const TopBarUI = ({ listaOpciones }: TopBarProps) => {
+import HamburguerMenu from "./hamburguerMenu/HamburguerMenu";
+import { useState } from "react";
+const TopBarUI = ({ listaOpciones,toggleMenu }: TopBarProps) => {
+  const [hamburguerMenu, setHamburguerMenu] = useState(false);
+  const handleHamburguerClick = () => {
+    setHamburguerMenu(prev => !prev);
+    if (toggleMenu) toggleMenu();
+  }
  return (
-    <div className="relative">
-      <img src="/img/TopBarBackground.svg" alt="Top Bar Background" className="w-full"/>
-      <nav className="absolute top-0 left-0 flex h-16 items-center px-6 justify-center w-full space-x-4 mt-3">
+    <div className="relative w-full bg-no-repeat bg-cover" style={{ backgroundImage: "url('/img/TopBarBackground.svg')" }}>
+      <nav className="flex items-center justify-center h-20 sm:h-24 md:h-28 space-x-8 gap-3 ">
         {listaOpciones.map((opcion, index) => (
-          <ul key={index}>
-            <li style={{ color: "#FFDF2C" }}>
+          <ul key={index} className="hidden md:flex gap-6">
+            <li>
               <Link
                 to={opcion.toLowerCase()}
                 smooth={true}
                 duration={500}
                 offset={-64}
-                className="cursor-pointer text-lg font-bold m-4 p-2 rounded transition duration-300" style={{ fontSize: "24px" }}
+                className="cursor-pointer font-bold text-yellow-300 transition duration-300 text-base sm:text-lg md:text-xl" style={{ fontSize: "22px" }}
               >
                 {opcion}
               </Link>
@@ -21,6 +27,18 @@ const TopBarUI = ({ listaOpciones }: TopBarProps) => {
           </ul>
         ))}
       </nav>
+      <button
+        className="absolute top-4 right-6 block md:hidden text-yellow-300 text-3xl focus:outline-none"
+        onClick={handleHamburguerClick}>
+        ☰
+      </button>
+      {hamburguerMenu && (
+        <HamburguerMenu
+          hamburguerMenu={hamburguerMenu}
+          listaOpciones={listaOpciones}
+          toggleMenu={() => setHamburguerMenu(false)}
+        />
+      )}
     </div>
   );
 }
