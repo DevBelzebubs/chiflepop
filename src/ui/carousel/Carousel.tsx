@@ -1,11 +1,9 @@
-import React from 'react'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";  
 import "slick-carousel/slick/slick-theme.css";
 
 const Carousel = () => {
   const config = {
-    dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
@@ -28,19 +26,19 @@ const Carousel = () => {
     ]
   };
   return (
-    <div className='w-full z-0'>
+    <div className='w-full relative -z-10 -mt-4'>
       <Slider {...config}>
         <div>
           <img src="/img/Logo.svg" alt="Imagen 1" className="w-full h-auto" />
         </div>
         <div>
-          <img src="/img/img2.jpg" alt="Imagen 2" className="w-full h-auto" />
+          <img src="/img/Carousel-img1.svg" alt="Imagen 2" className="w-full h-auto" />
         </div>
         <div>
-          <img src="/img/img3.jpg" alt="Imagen 3" className="w-full h-auto" />
+          <img src="/img/Carousel-img2.svg" alt="Imagen 3" className="w-full h-auto" />
         </div>
         <div>
-          <img src="/img/img4.jpg" alt="Imagen 4" className="w-full h-auto" />
+          <img src="/img/Carousel-img3.svg" alt="Imagen 4" className="w-full h-auto" />
         </div>
       </Slider>
     </div>

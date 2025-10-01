@@ -5,10 +5,10 @@ import Carousel from './ui/carousel/Carousel'
 
 function App() {
   return (
-    <div className='scrollbar-hide overflow-y-scroll w-full'>
-      <TopBar></TopBar>
-      <Carousel></Carousel>
-      <Elements></Elements>
+    <div className='scrollbar-hide overflow-y-scroll w-full overflow-x-hidden'>
+      <TopBar />
+      <Carousel />
+      <Elements />
     </div>
   )
 }
