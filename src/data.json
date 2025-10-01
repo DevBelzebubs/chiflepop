@@ -1,0 +1,40 @@
+[
+  {
+    "id": 1,
+    "name": "Chifles",
+    "productos": [
+      {
+        "name": "Chifles sabor tradicional",
+        "description": "Chifles de origen piuranos, de sabor tradicional."
+      },
+      {
+        "name": "Chifles sabor acevichado",
+        "description": "Chifles de origen piuranos, de sabor acevichado."
+      },
+      {
+        "name": "Chifles sabor picante",
+        "description": "Chifles de origen piuranos, de sabor picante."
+      },
+      {
+        "name": "Chifles sabor tocino",
+        "description": "Chifles de origen piuranos, de sabor tocino."
+      }
+    ]
+  },{
+    "id": 2,
+    "productos": [
+      {
+        "name": "Alfajores",
+        "description": "Galletas unidas a un manjar blanco, de sabor tradicional."
+      }
+    ]
+  },{
+    "id": 3,
+    "productos": [
+      {
+        "name": "Cocada",
+        "description": "Coconut macaroons"
+      }
+    ]
+  }
+]

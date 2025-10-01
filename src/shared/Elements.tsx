@@ -1,6 +1,6 @@
 import React, { type JSX } from 'react'
 import { Element } from "react-scroll";
-import Productos from '../components/Productos';
+import Productos from '../components/ProductosComponent/Productos';
 
 const Elements=()=> {
     const secciones: Record<string, JSX.Element> = {
