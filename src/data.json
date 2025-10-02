@@ -22,6 +22,7 @@
     ]
   },{
     "id": 2,
+    "name": "Alfajores",
     "productos": [
       {
         "name": "Alfajores",
@@ -30,6 +31,7 @@
     ]
   },{
     "id": 3,
+    "name": "Cocada",
     "productos": [
       {
         "name": "Cocada",
