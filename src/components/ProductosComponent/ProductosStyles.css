@@ -2,7 +2,25 @@
     background-color: rgba(80, 174, 54, 0.25);
     color: #EDC900;
 }
+.cardHover{
+    transition: transform 0.2s ease-in-out;
+}
+.cardHover:hover{
+    transform: scale(110%);
+    transition: transform 0.2s ease-in-out;
+}
+.buttonHover{
+    transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+}
 .buttonHover:hover {
     background-color: rgba(80, 174, 54, 0.25);
     color: #EDC900;
+    transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+}
+.wsp{
+    transition: background-color 0.2s ease-in-out;
+}
+.wsp:hover{
+    background-color:#EDC900;
+    transition: background-color 0.2s ease-in-out;
 }

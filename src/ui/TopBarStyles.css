@@ -1,0 +1,35 @@
+.topBarElement{
+    transition: transform 0.2s ease-in-out;
+}
+.topBarElement:hover{
+    transform: scale(110%);
+    transition: transform 0.2s ease-in-out;
+}
+
+.menu-open {
+  animation: openMenu 0.3s ease-out forwards;
+}
+
+.menu-close {
+  animation: closeMenu 0.3s ease-in forwards;
+}
+
+@keyframes openMenu{
+    from{
+        transform: translateY(-20px);
+        opacity: 0;
+    }to{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+@keyframes closeMenu {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+}

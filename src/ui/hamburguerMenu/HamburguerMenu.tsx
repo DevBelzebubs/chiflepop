@@ -1,16 +1,17 @@
 import { Link } from 'react-scroll';
 import type { TopBarProps } from '../../interfaces/TopBarProps';
+import "../TopBarStyles.css";
 type Props = {
   hamburguerMenu: boolean;
 } & TopBarProps;
 
 const HamburguerMenu=({ hamburguerMenu, listaOpciones }: Props)=> {
   return (
-    <div className="absolute top-1 left-0 w-full flex flex-col items-center justify-between md:hidden z-40 relative">
+    <div className={`absolute top-1 left-0 w-full flex flex-col items-center justify-between md:hidden z-40 relative ${hamburguerMenu ? "menu-open" : "menu-close"}`}>
         {hamburguerMenu && (
             <div className="flex flex-col items-center space-y-2 z-10 relative">
                 {listaOpciones.map((opcion, index) => (
-                    <Link key={index} to={opcion.toLowerCase()} smooth={true} duration={500} offset={-64} className="cursor-pointer font-bold text-yellow-300 hover:text-black transition duration-300 text-lg sm:text-xl">
+                    <Link key={index} to={opcion.toLowerCase()} smooth={true} duration={500} offset={-64} className="cursor-pointer font-bold text-yellow-300 transition duration-300 text-lg sm:text-xl topBarElement">
                     {opcion}
                     </Link>
                 ))}
