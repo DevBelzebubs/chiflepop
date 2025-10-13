@@ -1,14 +1,11 @@
 import './App.css'
-import Elements from './shared/Elements'
-import TopBar from './shared/TopBar'
-import Carousel from './ui/carousel/Carousel'
+import AppLayout from './layout/AppLayout'
+
 
 function App() {
   return (
     <div className='scrollbar-hide overflow-y-scroll w-full overflow-x-hidden'>
-      <TopBar />
-      <Carousel />
-      <Elements />
+      <AppLayout/>
     </div>
   )
 }

@@ -1,6 +1,6 @@
-import type {TopBarProps} from "../interfaces/TopBarProps"
+import type {TopBarProps} from "../../interfaces/TopBarProps"
 import { Link } from "react-scroll";
-import HamburguerMenu from "./hamburguerMenu/HamburguerMenu";
+import HamburguerMenu from "../hamburguerMenu/HamburguerMenu";
 import { useState } from "react";
 import "./TopBarStyles.css"
 const TopBarUI = ({ listaOpciones,toggleMenu }: TopBarProps) => {
