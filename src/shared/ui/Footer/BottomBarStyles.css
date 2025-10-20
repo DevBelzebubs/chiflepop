@@ -1,0 +1,7 @@
+.libro-reclamaciones{
+    transition: transform 0.2s ease-in-out;
+}
+.libro-reclamaciones:hover{
+    transform: scale(110%);
+    cursor: pointer;
+}

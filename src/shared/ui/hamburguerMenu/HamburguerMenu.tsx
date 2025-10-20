@@ -1,5 +1,5 @@
 import { Link } from 'react-scroll';
-import type { TopBarProps } from '../../interfaces/TopBarProps';
+import type { TopBarProps } from '../../../interfaces/TopBarProps';
 import "../Header/TopBarStyles.css";
 type Props = {
   hamburguerMenu: boolean;

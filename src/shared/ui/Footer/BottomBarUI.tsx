@@ -1,6 +1,9 @@
-
-const BottomBarUI = () => {
-    const socialMedia = ['/img/Facebook.svg','/img/Instagram.svg','/img/WhatsApp.svg']
+import "./BottomBarStyles.css"
+type Props = {
+  socialMedia: string[];
+  onToggleModal: () => void;
+};
+const BottomBarUI = ({socialMedia,onToggleModal}:Props) => {
   return (
     <div className='relative w-full bg-no-repeat bg-cover z-50 flex justify-center' style={{backgroundImage:"url('/img/BottomBarBackground.svg')"}}>
         <div className='flex flex-col md:flex-row items-center justify-between px-6 md:pl-10 gap-10 md:gap-[30vw] mt-[250px] md:mt-[20vh] mb-10'>
@@ -21,9 +24,9 @@ const BottomBarUI = () => {
                             <img src={opcion} width={'42px'}/>
                         ))}
                     </div>
-                    <div className='flex items-center justify-center md:justify-start gap-2 mt-3'>
+                    <div className='flex items-center justify-center md:justify-start gap-2 mt-3 libro-reclamaciones'>
                         <img src='/img/libro-abierto.svg' width={"34px"}/>
-                        <p style={{color: "#7E7E7E", fontWeight: "bold"}}>Libro de reclamaciones</p>
+                        <p style={{color: "#7E7E7E", fontWeight: "bold"}} onClick={onToggleModal}>Libro de reclamaciones</p>
                     </div>
                 </div>
             </div>

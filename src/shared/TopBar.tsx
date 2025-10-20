@@ -1,4 +1,4 @@
-import TopBarUI from "../ui/Header/TopBarUI"
+import TopBarUI from "./ui/Header/TopBarUI"
 import { useState } from "react";
 const TopBar = () => {
   const listaOpciones = ["Productos", "Clientes", "Contactos"];
