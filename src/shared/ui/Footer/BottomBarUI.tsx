@@ -5,7 +5,7 @@ type Props = {
 };
 const BottomBarUI = ({socialMedia,onToggleModal}:Props) => {
   return (
-    <div className='relative w-full bg-no-repeat bg-cover z-50 flex justify-center' style={{backgroundImage:"url('/img/BottomBarBackground.svg')"}}>
+    <div className='relative w-full bg-no-repeat bg-cover z-10 flex justify-center' style={{backgroundImage:"url('/img/BottomBarBackground.svg')"}}>
         <div className='flex flex-col md:flex-row items-center justify-between px-6 md:pl-10 gap-10 md:gap-[30vw] mt-[250px] md:mt-[20vh] mb-10'>
             <img src='/img/LogoFotter.svg' width={"320px"}/>
             <div className='flex flex-col md:flex-row items-center md:items-start justify-between gap-10 bg-white rounded-[30px] p-8 shadow-[0_4px_10px_rgba(0,0,0,0.25)] w-[90%] md:w-auto'  style={{boxShadow: "0 4px 10px 0 rgb(0,0,0,0.25)"}}>
