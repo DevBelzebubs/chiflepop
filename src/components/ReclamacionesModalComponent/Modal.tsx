@@ -1,39 +1,45 @@
-import { AnimatePresence, motion } from "framer-motion";
 import React, { useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
-const Modal:React.FC<ModalProps> = ({ isOpen, onClose }) => {
+
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
   useEffect(() => {
-    const handleEscape = (e:KeyboardEvent) =>{
-      if (e.key === 'Escape') onClose();
-    }
-    document.addEventListener('keydown', handleEscape);
-    return () => {
-      document.removeEventListener('keydown', handleEscape);
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
     };
-  },[onClose]);
+    document.addEventListener("keydown", handleEscape);
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [onClose]);
+
   return (
     <AnimatePresence>
       {isOpen && (
         <motion.div
+          key="overlay"
           className="fixed inset-0 z-[100] flex items-center justify-center backdrop-blur-sm bg-black/40"
           onClick={onClose}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
+          transition={{ duration: 0.25, ease: "easeInOut" }}
         >
           <motion.div
+            key="content"
             className="flex flex-col md:flex-row w-full max-w-5xl rounded-2xl overflow-hidden shadow-xl bg-white"
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.9, opacity: 0 }}
-            transition={{ duration: 0.25, ease: "easeInOut" }}
+            exit={{ scale: 0.8, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
             onClick={(e) => e.stopPropagation()}
           >
             <div
-              className="w-full md:w-1/2 text-white p-8 md:p-10 flex flex-col justify-center"
+              className="w-full md:w-1/2 text-white p-8 md:p-10 flex flex-col justify-start"
               style={{ backgroundColor: "#7BBB50" }}
             >
               <h1 className="text-2xl md:text-3xl font-bold mb-4">
@@ -112,4 +118,5 @@ const Modal:React.FC<ModalProps> = ({ isOpen, onClose }) => {
     </AnimatePresence>
   );
 };
+
 export default Modal;

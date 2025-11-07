@@ -14,7 +14,7 @@ const AppLayout = () => {
       <Carousel/>
       <Elements/>
       <BottomBar useModal={modal} onToggleModal={handleModal}/>
-      {modal && (<Modal isOpen={modal} onClose={handleModal} />)}
+      <Modal isOpen={modal} onClose={handleModal}/>
     </div>
   )
 }
