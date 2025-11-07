@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface ModalProps {
@@ -16,7 +16,60 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
       document.removeEventListener("keydown", handleEscape);
     };
   }, [onClose]);
+  const initialForm = {
+    nombre: "",
+    email: "",
+    tipoQueja: "",
+    detalles: "",
+  };
+  const [formData, setFormData] = useState(initialForm);
+  const [isSending, setIsSending] = useState(false);
+  const [formMessage, setFormMessage] = useState<string | null>(null);
+  const handleChange = (e:React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const {name, value} = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  }
+  const handleSubmit = async (e:React.FormEvent) =>{
+    e.preventDefault();
+    setFormData(initialForm);
+    setIsSending(true);
+    setFormMessage(null);
+    const formEndpoint = "https://formspree.io/f/xrbrzznb";
+    try{
+      const response = await fetch(formEndpoint,{
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify(formData)
+      });
 
+      if(!response.ok){
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Error submitting the form");
+      }
+      setFormMessage("Formulario enviado con éxito. ¡Gracias por tu feedback!");
+      setFormData(initialForm);
+
+      setTimeout(() => {
+        onClose();
+        setFormMessage(null);
+      }, 2000);
+    }catch(error){
+      console.error("Error submitting form:", error);
+      if(error instanceof Error){
+        setFormMessage(error.message);
+      }else{
+          setFormMessage("Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo más tarde.");
+      }
+    }finally{
+      setIsSending(false);
+    }
+    onClose();
+  }
   return (
     <AnimatePresence>
       {isOpen && (
@@ -67,7 +120,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
               </div>
             </div>
 
-            <form className="w-full md:w-1/2 bg-white flex justify-center p-8 md:p-10">
+            <form className="w-full md:w-1/2 bg-white flex justify-center p-8 md:p-10" onSubmit={handleSubmit}>
               <div className="w-full max-w-md flex flex-col gap-6">
                 <div className="w-full">
                   <h2 className="text-sm md:text-base mb-1 font-semibold">Nombre:</h2>
@@ -75,6 +128,10 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                     className="border border-[#626262] rounded-lg w-full h-[2.8rem] pl-3 text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-[#3B9B03]"
                     placeholder="Tu nombre..."
                     type="text"
+                    name="nombre"
+                    value={formData.nombre}
+                    onChange={handleChange}
+                    required
                   />
                 </div>
 
@@ -84,12 +141,21 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                     className="border border-[#626262] rounded-lg w-full h-[2.8rem] pl-3 text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-[#3B9B03]"
                     placeholder="Tu email..."
                     type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
                   />
                 </div>
 
                 <div className="w-full">
                   <h2 className="text-sm md:text-base mb-1 font-semibold">Tipo de queja:</h2>
-                  <select className="border border-[#626262] rounded-lg w-full h-[2.8rem] pl-2 text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-[#3B9B03]">
+                  <select className="border border-[#626262] rounded-lg w-full h-[2.8rem] pl-2 text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-[#3B9B03]"
+                  name="tipoQueja"
+                  value={formData.tipoQueja}
+                  onChange={handleChange}
+                  required
+                  >
                     <option value="">Selecciona una opción</option>
                     <option value="Calidad de producto">Calidad de producto</option>
                     <option value="Servicio de delivery">Servicio de delivery</option>
@@ -102,14 +168,24 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                   <textarea
                     className="border border-[#626262] rounded-lg w-full h-[7rem] pl-3 pt-2 text-sm md:text-base resize-none focus:outline-none focus:ring-2 focus:ring-[#3B9B03]"
                     placeholder="Proporcione detalles de la queja"
+                    name="detalles"
+                    value={formData.detalles}
+                    onChange={handleChange}
+                    required
                   ></textarea>
                 </div>
 
-                <button
-                  className="mt-2 p-3 rounded-lg bg-[#3B9B03] text-white text-sm md:text-base font-medium transition-all duration-300 hover:brightness-110"
+                <button type="submit" 
+                className="mt-2 p-3 rounded-lg bg-[#3B9B03] text-white text-sm md:text-base font-medium transition-all duration-300 hover:brightness-110"
+                disabled={isSending}
                 >
-                  Completar formulario
+                  {isSending ? "Enviando..." : "Completar formulario"}
                 </button>
+                {formMessage && (
+                  <p className={`mt-4 text-center text-sm ${formMessage.includes('error') ? 'text-red-600' : 'text-green-600'}`}>
+                    {formMessage}
+                  </p>
+                )}
               </div>
             </form>
           </motion.div>

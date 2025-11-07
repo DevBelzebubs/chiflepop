@@ -18,23 +18,25 @@ type Props = {
 const ProductosList = ({ productos = [] }: Props) => {
   return (
     <div className="w-full max-w-[1300px] mx-auto px-4">
-      <div className="flex flex-wrap gap-5 justify-center">
+      <div className="flex flex-wrap gap-8 justify-center">
       {productos.map((categoria, i) =>
         categoria.productos.map((prod, j) => (
-          <div key={`${i}-${j}`} className="flex flex-col items-center border-solid rounded-2xl p-4 ml-2 mr-2 cardHover" style={{ width: "250px", boxShadow: "0 4px 10px 0 rgb(0,0,0,0.25)"}}>
-            <img src={prod.image || "/img/default.png"} className="w-32 h-32 object-contain"/>
-            <div className="text-start">
-              <h2 className="text-base font-semibold">{prod.name}</h2>
-              <p className="text-sm font-medium">{prod.description}</p>
+          <div key={`${i}-${j}`} className="flex flex-col bg-white border-2 border-transparent rounded-3xl p-6 cardHover" style={{ width: "280px", boxShadow: "0 4px 16px rgba(0,0,0,0.1)"}}>
+            <div className="flex justify-center items-center bg-gradient-to-br from-green-50 to-yellow-50 rounded-2xl p-6 mb-4">
+              <img src={prod.image || "/img/default.png"} className="w-32 h-32 object-contain"/>
+            </div>
+            <div className="text-start space-y-2">
+              <h2 className="text-lg font-bold text-gray-800">{prod.name}</h2>
+              <p className="text-sm text-gray-600 leading-relaxed">{prod.description}</p>
             </div>
           </div>
           ))
         )}
       </div>
-      <div className="flex mt-10 justify-center">
-          <a href={`https://wa.me/51960662079?text=Hola%20mundo`} target="_blank" rel="noopener noreferrer" className="bg-[#50AE36] text-white pt-2 pb-2 pr-7 pl-7 rounded-2xl flex items-center gap-1 wsp">
-            <img src="/img/whatsapp-logo.svg" width={42} />
-            <h2 className="text-2xl pb-1">Compra ahora</h2>
+      <div className="flex mt-16 justify-center">
+          <a href={`https://wa.me/51960662079?text=Hola%20mundo`} target="_blank" rel="noopener noreferrer" className="bg-[#50AE36] text-white px-8 py-4 rounded-2xl flex items-center gap-3 wsp font-bold text-lg">
+            <img src="/img/whatsapp-logo.svg" width={36} alt="WhatsApp" />
+            <span className="text-xl">Compra ahora</span>
           </a>
         </div>
     </div>

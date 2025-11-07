@@ -18,9 +18,12 @@
     transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
 }
 .wsp{
-    transition: background-color 0.2s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 12px rgba(80, 174, 54, 0.3);
 }
+
 .wsp:hover{
     background-color:#EDC900;
-    transition: background-color 0.2s ease-in-out;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(237, 201, 0, 0.4);
 }
