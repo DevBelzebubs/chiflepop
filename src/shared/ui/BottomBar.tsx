@@ -5,7 +5,7 @@ type Props = {
 };
 
 
-const BottomBar = ({useModal,onToggleModal}:Props) => {
+const BottomBar = ({onToggleModal}:Props) => {
     const socialMedia = ["/img/Facebook.svg","/img/Instagram.svg","/img/WhatsApp.svg"];
   return (
     <div>

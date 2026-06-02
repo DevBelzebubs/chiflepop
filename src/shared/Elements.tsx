@@ -1,4 +1,4 @@
-import React, { type JSX } from 'react'
+import { type JSX } from 'react'
 import { Element } from "react-scroll";
 import Productos from '../components/ProductosComponent/Productos';
 import Clientes from '../components/ClientesComponent/Clientes';

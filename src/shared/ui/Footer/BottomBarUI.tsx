@@ -27,7 +27,9 @@ const BottomBarUI = ({socialMedia,onToggleModal}:Props) => {
                     <h2 className='text-2xl font-bold' style={{color:"#50AE36"}}>Conecta con nosotros</h2>
                     <div className='flex gap-4 flex-wrap justify-center md:justify-start'>
                         {socialMedia.map((opcion, index)=>(
-                            <img key={index} src={opcion} width={'46px'} alt="Social media" className='hover:scale-110 transition-transform duration-200 cursor-pointer'/>
+                            <a href="https://www.facebook.com/chiflepop">
+                                <img key={index} src={opcion} width={'46px'} alt="Social media" className='hover:scale-110 transition-transform duration-200 cursor-pointer'/>
+                            </a>
                         ))}
                     </div>
                     <div className='flex items-center justify-center md:justify-start gap-3 mt-4 libro-reclamaciones'>
